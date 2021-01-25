@@ -1,4 +1,5 @@
 ﻿using Cars.cs.Controller;
+using Cars.cs.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,15 +22,16 @@ namespace Cars.AddItem
     /// </summary>
     public partial class AddCar : Window
     {
+        Auto newCar;
         public AddCar()
         {
             InitializeComponent();
+            newCar = new Auto();
+            this.DataContext = newCar;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            //TODO: Добавить проверку и обновление данных на экране
-                  
+        {                      
             ControllerAuto.Add(carBrand.Text, 
                 carModel.Text, 
                 gosNumber.Text, 

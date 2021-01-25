@@ -9,20 +9,74 @@
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="10,10,2,0" TextWrapping="Wrap" Text="Введите марку авто:" VerticalAlignment="Top"/>
         <TextBox Name="carBrand" HorizontalAlignment="Left" Height="23" Margin="10,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
-            
+            <TextBox.Text>
+                <Binding Path="CarBrand">
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
         </TextBox>
         <TextBlock HorizontalAlignment="Left" Margin="10,54,0,0" TextWrapping="Wrap" Text="Введите модель авто:" VerticalAlignment="Top"/>
-        <TextBox Name="carModel" HorizontalAlignment="Left" Height="23" Margin="10,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="carModel" HorizontalAlignment="Left" Height="23" Margin="10,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+            <TextBox.Text>
+                <Binding Path="CarModel">
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
         <TextBlock HorizontalAlignment="Left" Margin="10,98,0,0" TextWrapping="Wrap" Text="Введите гос. номер:" VerticalAlignment="Top"/>
-        <TextBox Name="gosNumber" HorizontalAlignment="Left" Height="23" Margin="10,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="gosNumber" HorizontalAlignment="Left" Height="23" Margin="10,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+            <TextBox.Text>
+                <Binding Path="GosNumber">
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
         <TextBlock HorizontalAlignment="Left" Margin="10,142,0,0" TextWrapping="Wrap" Text="Введите год выпуска:" VerticalAlignment="Top"/>
-        <TextBox Name="autoYear" HorizontalAlignment="Left" Height="23" Margin="10,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="autoYear" HorizontalAlignment="Left" Height="23" Margin="10,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+            <TextBox.Text>
+                <Binding Path="AutoYear">
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
         <TextBlock HorizontalAlignment="Left" Margin="10,186,0,0" TextWrapping="Wrap" Text="Введите цвет:" VerticalAlignment="Top"/>
-        <TextBox Name="color" HorizontalAlignment="Left" Height="23" Margin="10,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="color" HorizontalAlignment="Left" Height="23" Margin="10,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+            <TextBox.Text>
+                <Binding Path="Color">
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
         <TextBlock HorizontalAlignment="Left" Margin="10,230,0,0" TextWrapping="Wrap" Text="Введите пробег:" VerticalAlignment="Top"/>
-        <TextBox Name="carMileage" HorizontalAlignment="Left" Height="23" Margin="10,246,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="carMileage" HorizontalAlignment="Left" Height="23" Margin="10,246,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+            <TextBox.Text>
+                <Binding Path="CarMileage">
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
         <TextBlock HorizontalAlignment="Left" Margin="10,274,0,0" TextWrapping="Wrap" Text="Введите объем бака:" VerticalAlignment="Top"/>
-        <TextBox Name="fuelVolume" HorizontalAlignment="Left" Height="23" Margin="10,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="fuelVolume" HorizontalAlignment="Left" Height="23" Margin="10,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+            <TextBox.Text>
+                <Binding Path="FuelVolume">
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
         <Button Content="Добавить" HorizontalAlignment="Left" Margin="55,341,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
 
     </Grid>

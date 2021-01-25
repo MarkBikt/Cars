@@ -69,6 +69,31 @@ namespace Cars.cs.model
                             error = "Поле не может быть пустым!";
                         }
                         break;
+                    case "AutoYear":
+                        if(AutoYear > DateTime.Now.Year || AutoYear < 1900)
+                        {
+                            error = "Дата выпуска не может быть больше настоящего времени или меньше 1900 года!";
+                        }
+                        break;
+                    case "Color":
+                        if(Color == null)
+                        {
+                            error = "Цвет не может быть пустым!";
+                        }
+                        break;
+                    case "CarMileage":
+                        if(CarMileage < 0)
+                        {
+                            error = "Пробег не может быть меньше нуля!";
+                        }
+                        break;
+                    case "FuelVolume":
+                        if(CarMileage <= 0)
+                        {
+                            error = "Объем бака не может быть меньше или равен нулю!";
+                        }
+                        break;
+
                 }
                 return error;
             }
