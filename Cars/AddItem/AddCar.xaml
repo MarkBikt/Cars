@@ -1,0 +1,29 @@
+﻿<Window x:Class="Cars.AddItem.AddCar"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cars.AddItem"
+        mc:Ignorable="d"
+        Title="AddCar" Height="400" Width="200">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,2,0" TextWrapping="Wrap" Text="Введите марку авто:" VerticalAlignment="Top"/>
+        <TextBox Name="carBrand" HorizontalAlignment="Left" Height="23" Margin="10,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+            
+        </TextBox>
+        <TextBlock HorizontalAlignment="Left" Margin="10,54,0,0" TextWrapping="Wrap" Text="Введите модель авто:" VerticalAlignment="Top"/>
+        <TextBox Name="carModel" HorizontalAlignment="Left" Height="23" Margin="10,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,98,0,0" TextWrapping="Wrap" Text="Введите гос. номер:" VerticalAlignment="Top"/>
+        <TextBox Name="gosNumber" HorizontalAlignment="Left" Height="23" Margin="10,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,142,0,0" TextWrapping="Wrap" Text="Введите год выпуска:" VerticalAlignment="Top"/>
+        <TextBox Name="autoYear" HorizontalAlignment="Left" Height="23" Margin="10,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,186,0,0" TextWrapping="Wrap" Text="Введите цвет:" VerticalAlignment="Top"/>
+        <TextBox Name="color" HorizontalAlignment="Left" Height="23" Margin="10,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,230,0,0" TextWrapping="Wrap" Text="Введите пробег:" VerticalAlignment="Top"/>
+        <TextBox Name="carMileage" HorizontalAlignment="Left" Height="23" Margin="10,246,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,274,0,0" TextWrapping="Wrap" Text="Введите объем бака:" VerticalAlignment="Top"/>
+        <TextBox Name="fuelVolume" HorizontalAlignment="Left" Height="23" Margin="10,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Добавить" HorizontalAlignment="Left" Margin="55,341,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+
+    </Grid>
+</Window>

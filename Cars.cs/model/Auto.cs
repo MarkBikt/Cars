@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ namespace Cars.cs.model
     /// <summary>
     /// Автомобиль
     /// </summary>
-    public class Auto
+    public class Auto : IDataErrorInfo
     {      
         public int Id { get; set; }
         /// <summary>
@@ -35,23 +36,56 @@ namespace Cars.cs.model
         /// <summary>
         /// Пробег автомобиля
         /// </summary>
-        public int CarMileage { get; set; }
+        public double CarMileage { get; set; }
         /// <summary>
         /// Объем топлива в баке
         /// </summary>
         public double FuelVolume { get; set; }
+
+        public string Error => throw new NotImplementedException();
+
+        public string this[string columnName]
+        {
+            get
+            {
+                string error = String.Empty;
+                switch (columnName)
+                {
+                    case "CarBrand":
+                        if(CarBrand == null)
+                        {
+                            error = "Поле не может быть пустым!";
+                        }
+                        break;
+                    case "CarModel":
+                        if(CarModel == null)
+                        {
+                            error = "Поле не может быть пустым!";
+                        }
+                        break;
+                    case "GosNumber":
+                        if(GosNumber == null || GosNumber.Length > 9)
+                        {
+                            error = "Поле не может быть пустым!";
+                        }
+                        break;
+                }
+                return error;
+            }
+        }
+
         /// <summary>
         /// Список запчастей
         /// </summary>
-        public List<SparePart> SpareParts { get; set; }
+        public List<SparePart> SpareParts = new List<SparePart>();
         /// <summary>
         /// Список услуг
         /// </summary>
-        public List<Service> Services { get; set; }
+        public List<Service> Services = new List<Service>();
         /// <summary>
         /// Список заправок
         /// </summary>
-        public List<Refueling> Refuelings { get; set; }
+        public List<Refueling> Refuelings = new List<Refueling>();
 
         public Auto()
         {
@@ -67,7 +101,7 @@ namespace Cars.cs.model
         /// <param name="color"></param>
         /// <param name="carMileage"></param>
         /// <param name="fuelVolume"></param>
-        public Auto(string carBrand, string carModel, string gosNumber, int autoYear, string color, int carMileage, double fuelVolume)
+        public Auto(string carBrand, string carModel, string gosNumber, int autoYear, string color, double carMileage, double fuelVolume)
         {
             CarBrand = carBrand ?? throw new ArgumentNullException(nameof(carBrand));
             CarModel = carModel ?? throw new ArgumentNullException(nameof(carModel));
@@ -98,6 +132,11 @@ namespace Cars.cs.model
             {
                 throw new ArgumentException("Объем бака не может быть меньше или равен нулю", nameof(fuelVolume));
             }
+        }
+
+        public override string ToString()
+        {
+            return $"{CarBrand} {CarModel} {GosNumber}";
         }
     }
 }

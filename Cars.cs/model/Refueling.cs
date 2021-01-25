@@ -20,11 +20,15 @@ namespace Cars.cs.model
         /// Объем одной заправки
         /// </summary>
         public double Volume { get; set; }
-
-        public Refueling(double price, double volume)
+        /// <summary>
+        /// Пробег
+        /// </summary>
+        public double CarMileage { get; set; }
+        public Refueling(double price, double volume, double carMileage)
         {
-            if (price >= 0 && volume > 0)
-            {               
+            if (price >= 0 && volume > 0 && carMileage >= 0)
+            {
+                CarMileage = carMileage;
                 Price = price;
                 Volume = volume;
             }
