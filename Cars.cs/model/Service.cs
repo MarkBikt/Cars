@@ -8,6 +8,7 @@ namespace Cars.cs.model
 {
     public class Service
     {
+        public int Id { get; set; }
         /// <summary>
         /// Название услуги
         /// </summary>
@@ -16,6 +17,16 @@ namespace Cars.cs.model
         /// Стоимость услуги
         /// </summary>
         public double Price { get; set; }
+        /// <summary>
+        /// Создание услуги
+        /// </summary>
+        /// <param name="name">Название</param>
+        /// <param name="price">Цена</param>
+
+        public Service()
+        {
+
+        }
         public Service(string name, double price)
         {
             Name = name ?? throw new ArgumentNullException(nameof(name));

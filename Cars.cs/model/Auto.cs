@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -72,7 +73,7 @@ namespace Cars.cs.model
                     case "AutoYear":
                         if(AutoYear > DateTime.Now.Year || AutoYear < 1900)
                         {
-                            error = "Дата выпуска не может быть больше настоящего времени или меньше 1900 года!";
+                            error = $"Год выпуска не может быть больше {DateTime.Now.Year} или меньше 1900 года!";
                         }
                         break;
                     case "Color":
@@ -102,15 +103,15 @@ namespace Cars.cs.model
         /// <summary>
         /// Список запчастей
         /// </summary>
-        public List<SparePart> SpareParts = new List<SparePart>();
+        public ObservableCollection<SparePart> SpareParts = new ObservableCollection<SparePart>();
         /// <summary>
         /// Список услуг
         /// </summary>
-        public List<Service> Services = new List<Service>();
+        public ObservableCollection<Service> Services = new ObservableCollection<Service>();
         /// <summary>
         /// Список заправок
         /// </summary>
-        public List<Refueling> Refuelings = new List<Refueling>();
+        public ObservableCollection<Refueling> Refuelings = new ObservableCollection<Refueling>();
 
         public Auto()
         {

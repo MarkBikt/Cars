@@ -8,6 +8,7 @@ namespace Cars.cs.model
 {
     public class Refueling
     {
+        public int Id { get; set; }
         /// <summary>
         /// Цена за литр
         /// </summary>
@@ -24,6 +25,17 @@ namespace Cars.cs.model
         /// Пробег
         /// </summary>
         public double CarMileage { get; set; }
+        /// <summary>
+        /// Заправка
+        /// </summary>
+        /// <param name="price">Цена</param>
+        /// <param name="volume">Объем</param>
+        /// <param name="carMileage">Пробег</param>
+
+        public Refueling()
+        {
+
+        }
         public Refueling(double price, double volume, double carMileage)
         {
             if (price >= 0 && volume > 0 && carMileage >= 0)

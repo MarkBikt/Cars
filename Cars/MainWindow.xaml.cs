@@ -3,6 +3,8 @@ using Cars.cs.Controller;
 using Cars.cs.model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,15 +29,10 @@ namespace Cars
         public MainWindow()
         {
             InitializeComponent();
-            
-
-            ControllerAuto.Add("Mazda", "RX-8", "X20KC18", 2007, "Red", 43800, 60);
-            ControllerAuto.Add("Mazda", "CX-7", "P231EP716", 2011, "White", 123897, 63);
-            ControllerAuto.Add("Lada", "Priora", "H762OX116", 2008, "Silver", 222800, 40);
-           
+                             
             ComboBoxCars.ItemsSource = ControllerAuto.Cars;          
         }
-
+        
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Auto a = (Auto)ComboBoxCars.SelectedItem;
@@ -46,6 +43,11 @@ namespace Cars
         {
             AddCar addCar = new AddCar();
             addCar.ShowDialog();                               
+        }
+
+        private void Window_Initialized(object sender, EventArgs e)
+        {
+            ControllerAuto.Load();
         }
     }
 }

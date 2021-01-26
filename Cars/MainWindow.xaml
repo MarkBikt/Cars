@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cars"
         mc:Ignorable="d"
-        Title="Cars" Height="450" Width="800">
+        Title="Cars" Height="450" Width="800" Initialized="Window_Initialized">
     <Grid>
-        <ComboBox Name="ComboBoxCars" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" SelectionChanged="ComboBox_SelectionChanged" Margin="579,10,0,0" RenderTransformOrigin="-0.436,0.43"/>
-        <Button Name="B_AddCarWindow" Content="Добавить Авто" HorizontalAlignment="Left" Margin="480,10,0,0" VerticalAlignment="Top" Width="90" Click="Button_Click"/>
+
+        <ComboBox Name="ComboBoxCars" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" SelectionChanged="ComboBox_SelectionChanged" Margin="577,10,0,0" RenderTransformOrigin="-0.436,0.43"/>
+        <Button Name="B_AddCarWindow" Content="Добавить Авто" HorizontalAlignment="Left" Margin="460,10,0,0" VerticalAlignment="Top" Width="90" Click="Button_Click"/>
     </Grid>
 </Window>

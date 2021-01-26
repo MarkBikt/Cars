@@ -10,7 +10,8 @@ namespace Cars.cs.model
     /// Запчасти
     /// </summary>
     public class SparePart
-    {      
+    {
+        public int Id { get; set; }
         /// <summary>
         /// Название запчасти
         /// </summary>
@@ -23,12 +24,18 @@ namespace Cars.cs.model
         /// Стоимость замены
         /// </summary>
         public double RepPrice { get; set; }
+
+        public SparePart()
+        {
+
+        }
         /// <summary>
         /// Создание запчасти
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="price"></param>
-        /// <param name="repPrice"></param>
+        /// <param name="name">Название</param>
+        /// <param name="price">Цена</param>
+        /// <param name="repPrice">Цена замены</param>
+        /// 
         public SparePart(string name, double price, double repPrice)
         {
             Name = name ?? throw new ArgumentNullException(nameof(name));

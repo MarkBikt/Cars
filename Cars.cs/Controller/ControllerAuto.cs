@@ -33,35 +33,20 @@ namespace Cars.cs.Controller
         {
             var auto = new Auto(carBrand, carModel, gosNumber, autoYear, color, carMilage, fuelVolume);
             Cars.Add(auto);
+            SaveCar(auto);
         }
 
-        /// <summary>
-        /// Поиск авто по гос. номеру
-        /// </summary>
-        /// <param name="gosNumber"></param>
-        /// <returns></returns>
-        public static Auto TakeCar(string gosNumber)
-        {
-            if (string.IsNullOrWhiteSpace(gosNumber))
-            {
-                throw new ArgumentException($"{nameof(gosNumber)} не может быть пустым или содержать только пробел", nameof(gosNumber));
-            }
-
-            var auto = Cars.ToList().Find(F => F.GosNumber == gosNumber);
-            return auto;
-        }
         /// <summary>
         /// Добавление замены запчасти
         /// </summary>
-        public static void AddSparePart(string gosNumber, string name, double price, double repPrice)
+        public static void AddSparePart(string name, double price, double repPrice, Auto car)
         {
-            if (string.IsNullOrWhiteSpace(gosNumber))
+            if (car == null)
             {
-                throw new ArgumentException($"{nameof(gosNumber)} не может быть пустым или содержать только пробел", nameof(gosNumber));
+                throw new ArgumentException($"{nameof(car)} не может быть пустым", nameof(car));
             }
-
-            var auto = TakeCar(gosNumber);
-            auto.SpareParts.Add(new SparePart(name, price, repPrice));
+           
+            car.SpareParts.Add(new SparePart(name, price, repPrice));
             PriceAll += price;
             PriceAll += repPrice;
         }
@@ -69,15 +54,14 @@ namespace Cars.cs.Controller
         /// Добавление услуги
         /// </summary>
         /// <param name="gosNumber"></param>
-        public static void AddService(string gosNumber, string name, double price)
+        public static void AddService(string name, double price, Auto car)
         {
-            if (string.IsNullOrWhiteSpace(gosNumber))
+            if (car == null)
             {
-                throw new ArgumentException($"{nameof(gosNumber)} не может быть пустым или содержать только пробел", nameof(gosNumber));
+                throw new ArgumentException($"{nameof(car)} не может быть пустым", nameof(car));
             }
-
-            var auto = TakeCar(gosNumber);
-            auto.Services.Add(new Service(name, price));
+            
+            car.Services.Add(new Service(name, price));
             PriceAll += price;
         }
         /// <summary>
@@ -86,17 +70,45 @@ namespace Cars.cs.Controller
         /// <param name="gosNumber">гос. номер</param>
         /// <param name="price">Цена</param>
         /// <param name="volume">Объем в литрах</param>
-        public static void AddRefueling(string gosNumber, double price, double volume, double carMileage)
+        public static void AddRefueling(double price, double volume, double carMileage, Auto car)
         {
 
-            if (string.IsNullOrWhiteSpace(gosNumber))
+            if (car == null)
             {
-                throw new ArgumentException($"{nameof(gosNumber)} не может быть пустым или содержать только пробел", nameof(gosNumber));
+                throw new ArgumentException($"{nameof(car)} не может быть пустым", nameof(car));
             }
 
-            var auto = TakeCar(gosNumber);
-            auto.Refuelings.Add(new Refueling(price, volume, carMileage));
+            car.Refuelings.Add(new Refueling(price, volume, carMileage));
             PriceAll += price;
+        }
+        /// <summary>
+        /// Сохранение
+        /// </summary>
+        public static void SaveCar<T>(T item) where T: class
+        {
+            using (CarsContext db = new CarsContext())
+            {
+                db.Set<T>().Add(item);
+                
+               
+                db.SaveChanges();
+            }
+            
+        }
+
+        /// <summary>
+        /// Загрузка
+        /// </summary>
+        public static void Load()
+        {
+            using (CarsContext db = new CarsContext())
+            {
+                var cars = db.Cars;
+                foreach (var item in cars)
+                {
+                    Cars.Add(item);
+                }           
+            }
         }
     }
 }
