@@ -1,0 +1,44 @@
+﻿<Window x:Class="Cars.AddItem.AddRefueling"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cars.AddItem"
+        mc:Ignorable="d"
+        Title="Добавление заправки" Height="250" Width="200">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10,10,0,0"><Run Text="Цена заправки"/><Run Text=":"/></TextBlock>
+        <TextBox Name="price" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="10,31,0,0">
+            <TextBox.Text>
+                <Binding Path="Price">
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10,62,0,0"><Run Text="Объем в литрах"/><Run Text=":"/></TextBlock>
+        <TextBox Name="volume" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="10,84,0,0">
+            <TextBox.Text>
+                <Binding Path="Volume">
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10,116,0,0"><Run Text="Общий пробег"/><Run Text=":"/></TextBlock>
+        <TextBox Name="carMileage" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="10,138,0,0">
+            <TextBox.Text>
+                <Binding Path="CarMileage">
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <Button Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="55,177,0,0" Click="Button_Click"/>
+
+
+    </Grid>
+</Window>

@@ -14,5 +14,8 @@ namespace Cars.cs.model
 
         }
         public DbSet<Auto> Cars { get; set; }
+        public DbSet<SparePart> SpareParts { get; set; }
+        public DbSet<Service> Services { get; set; }
+        public DbSet<Refueling> Refuelings { get; set; }
     }
 }

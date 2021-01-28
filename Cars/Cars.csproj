@@ -69,12 +69,33 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AddItem\AddRefueling.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddItem\AddService.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddItem\AddSparePart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="AddItem\AddCar.xaml.cs">
       <DependentUpon>AddCar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddItem\AddRefueling.xaml.cs">
+      <DependentUpon>AddRefueling.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddItem\AddService.xaml.cs">
+      <DependentUpon>AddService.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddItem\AddSparePart.xaml.cs">
+      <DependentUpon>AddSparePart.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>

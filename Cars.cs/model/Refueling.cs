@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Cars.cs.model
 {
-    public class Refueling
+    public class Refueling : IDataErrorInfo
     {
         public int Id { get; set; }
         /// <summary>
@@ -25,6 +26,42 @@ namespace Cars.cs.model
         /// Пробег
         /// </summary>
         public double CarMileage { get; set; }
+
+        public int? AutoId { get; set; }
+        public virtual Auto Auto { get; set; }
+
+        public string Error => throw new NotImplementedException();
+
+        public string this[string columnName]
+        {
+            get
+            {
+                string error = String.Empty;
+                switch (columnName)
+                {
+                    case "Price":
+                        if (Price < 0)
+                        {
+                            error = "Поле не может отрицательным!";
+                        }
+                        break;
+                    case "Volume":
+                        if (Volume <= 0)
+                        {
+                            error = "Поле не может быть меньше либо равено нулю!";
+                        }
+                        break;
+                    case "CarMileage":
+                        if (CarMileage < 0)
+                        {
+                            error = "Поле не может быть отрицательным!";
+                        }
+                        break;                  
+                }
+                return error;
+            }
+        }
+
         /// <summary>
         /// Заправка
         /// </summary>
@@ -48,6 +85,10 @@ namespace Cars.cs.model
             {
                 throw new ArgumentException("Ни один из аргументов не может быть меньше нуля");
             }
+        }
+        public override string ToString()
+        {
+            return $"Заправлено: {Volume} Потрачено: {Price}  Цена за литр: {PriceOneLiter}";
         }
     }
 }

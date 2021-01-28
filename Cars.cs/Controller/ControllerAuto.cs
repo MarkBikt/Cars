@@ -17,7 +17,7 @@ namespace Cars.cs.Controller
         /// <summary>
         /// Потрачено на авто за все время
         /// </summary>
-        public static double PriceAll { get; set; } = 0;
+        public static double PriceAll { get; private set; } = 0;
       
         /// <summary>
         /// Добавление автомобиля
@@ -33,22 +33,27 @@ namespace Cars.cs.Controller
         {
             var auto = new Auto(carBrand, carModel, gosNumber, autoYear, color, carMilage, fuelVolume);
             Cars.Add(auto);
-            SaveCar(auto);
+            Save(auto);
         }
 
         /// <summary>
         /// Добавление замены запчасти
         /// </summary>
-        public static void AddSparePart(string name, double price, double repPrice, Auto car)
+        public static void AddSparePart(string name, double price, Auto car)
         {
             if (car == null)
             {
                 throw new ArgumentException($"{nameof(car)} не может быть пустым", nameof(car));
             }
-           
-            car.SpareParts.Add(new SparePart(name, price, repPrice));
-            PriceAll += price;
-            PriceAll += repPrice;
+            var sparePart = new SparePart(name, price) { AutoId = car.Id };
+            car.SpareParts.Add(sparePart);
+            //using (CarsContext db = new CarsContext())
+            //{
+            //    db.SpareParts.Add(sparePart);
+            //    db.SaveChanges();
+            //}
+            Save(sparePart);
+            PriceAll += price;            
         }
         /// <summary>
         /// Добавление услуги
@@ -60,8 +65,14 @@ namespace Cars.cs.Controller
             {
                 throw new ArgumentException($"{nameof(car)} не может быть пустым", nameof(car));
             }
-            
-            car.Services.Add(new Service(name, price));
+            var service = new Service (name, price) {AutoId = car.Id };
+            car.Services.Add(service);
+            //using (CarsContext db = new CarsContext())
+            //{
+            //    db.Services.Add(service);
+            //    db.SaveChanges();
+            //}
+            Save(service);
             PriceAll += price;
         }
         /// <summary>
@@ -77,20 +88,25 @@ namespace Cars.cs.Controller
             {
                 throw new ArgumentException($"{nameof(car)} не может быть пустым", nameof(car));
             }
+            var refueling = new Refueling(price, volume, carMileage) { AutoId = car.Id };
+            car.Refuelings.Add(refueling);
+            //using (CarsContext db = new CarsContext())
+            //{
 
-            car.Refuelings.Add(new Refueling(price, volume, carMileage));
+            //    db.Refuelings.Add(refueling);
+            //    db.SaveChanges();
+            //}
+            Save(refueling);
             PriceAll += price;
         }
         /// <summary>
         /// Сохранение
         /// </summary>
-        public static void SaveCar<T>(T item) where T: class
+        public static void Save<T>(T item) where T : class
         {
             using (CarsContext db = new CarsContext())
-            {
-                db.Set<T>().Add(item);
-                
-               
+            {            
+                db.Set<T>().Add(item);                              
                 db.SaveChanges();
             }
             
@@ -99,15 +115,32 @@ namespace Cars.cs.Controller
         /// <summary>
         /// Загрузка
         /// </summary>
-        public static void Load()
+        public static ObservableCollection<Auto> Load()
         {
             using (CarsContext db = new CarsContext())
             {
                 var cars = db.Cars;
+                var services = db.Services;
+                var refuelings = db.Refuelings;
+                var spareParts = db.SpareParts;
                 foreach (var item in cars)
                 {
+                    foreach (var service in services)
+                    {
+                        
+                    }
+                    foreach (var refueling in refuelings)
+                    {
+                        
+                    }
+                    foreach (var sparePart in spareParts)
+                    {
+                        
+                    }
                     Cars.Add(item);
-                }           
+                }
+                
+                return Cars;
             }
         }
     }

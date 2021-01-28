@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Cars.cs.model
 {
-    public class Service
+    public class Service : IDataErrorInfo
     {
         public int Id { get; set; }
         /// <summary>
@@ -23,6 +24,35 @@ namespace Cars.cs.model
         /// <param name="name">Название</param>
         /// <param name="price">Цена</param>
 
+        public int? AutoId { get; set; }
+        public virtual Auto Auto { get; set; }
+
+        public string Error => throw new NotImplementedException();
+
+        public string this[string columnName]
+        {
+            get
+            {
+                string error = String.Empty;
+                switch (columnName)
+                {
+                    case "Name":
+                        if (Name == null)
+                        {
+                            error = "Поле не может быть пустым!";
+                        }
+                        break;
+                    case "Price":
+                        if (Price < 0)
+                        {
+                            error = "Поле не может отрицательным!";
+                        }
+                        break;
+                }
+                return error;
+            }
+        }
+
         public Service()
         {
 
@@ -38,6 +68,10 @@ namespace Cars.cs.model
             {
                 throw new ArgumentException("Цена не может быть меньше нуля", nameof(price));
             }
+        }
+        public override string ToString()
+        {
+            return $"{Name}  {Price}руб.";
         }
     }
 }

@@ -25,18 +25,22 @@ namespace Cars
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+        public Auto car;
         public MainWindow()
         {
             InitializeComponent();
                              
-            ComboBoxCars.ItemsSource = ControllerAuto.Cars;          
+                      
         }
         
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Auto a = (Auto)ComboBoxCars.SelectedItem;
+            var a = (Auto)ComboBoxCars.SelectedItem;           
             MessageBox.Show(a.ToString());
+            ListBoxRefueling.ItemsSource = a.Refuelings;
+            ListBoxService.ItemsSource = a.Services;
+            ListBoxSparePart.ItemsSource = a.SpareParts;
+            car = a;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -47,7 +51,28 @@ namespace Cars
 
         private void Window_Initialized(object sender, EventArgs e)
         {
-            ControllerAuto.Load();
+            ComboBoxCars.ItemsSource = ControllerAuto.Load();                  
+        }
+        
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            AddService addService = new AddService();
+            addService.newAuto = car;
+            addService.ShowDialog();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            AddRefueling addRefueling = new AddRefueling();
+            addRefueling.newAuto = car;
+            addRefueling.ShowDialog();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            AddSparePart addSparePart = new AddSparePart();
+            addSparePart.newAuto = car;
+            addSparePart.ShowDialog();
         }
     }
 }

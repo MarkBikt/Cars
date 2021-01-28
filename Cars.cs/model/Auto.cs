@@ -43,6 +43,22 @@ namespace Cars.cs.model
         /// </summary>
         public double FuelVolume { get; set; }
 
+
+        /// <summary>
+        /// Список запчастей
+        /// </summary>
+        public ICollection<SparePart> SpareParts { get; set; } = new ObservableCollection<SparePart>();
+
+        /// <summary>
+        /// Список услуг
+        /// </summary>
+        public ICollection<Service> Services { get; set; } = new ObservableCollection<Service>();
+
+        /// <summary>
+        /// Список заправок
+        /// </summary>
+        public ICollection<Refueling> Refuelings { get; set; } = new ObservableCollection<Refueling>();
+
         public string Error => throw new NotImplementedException();
 
         public string this[string columnName]
@@ -100,22 +116,11 @@ namespace Cars.cs.model
             }
         }
 
-        /// <summary>
-        /// Список запчастей
-        /// </summary>
-        public ObservableCollection<SparePart> SpareParts = new ObservableCollection<SparePart>();
-        /// <summary>
-        /// Список услуг
-        /// </summary>
-        public ObservableCollection<Service> Services = new ObservableCollection<Service>();
-        /// <summary>
-        /// Список заправок
-        /// </summary>
-        public ObservableCollection<Refueling> Refuelings = new ObservableCollection<Refueling>();
+        
 
         public Auto()
         {
-
+            
         }
         /// <summary>
         /// Создание нового автомобиля
