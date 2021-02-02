@@ -2,21 +2,8 @@
 using Cars.cs.Controller;
 using Cars.cs.model;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Cars
 {
@@ -26,17 +13,16 @@ namespace Cars
     public partial class MainWindow : Window
     {
         public Auto car;
+        public AddRefueling refueling = new AddRefueling();
         public MainWindow()
         {
             InitializeComponent();
-                             
-                      
-        }
+        }   
         
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var a = (Auto)ComboBoxCars.SelectedItem;           
-            MessageBox.Show(a.ToString());
+            var a = (Auto)ComboBoxCars.SelectedItem;
+            ButtonEnabled(true);
             ListBoxRefueling.ItemsSource = a.Refuelings;
             ListBoxService.ItemsSource = a.Services;
             ListBoxSparePart.ItemsSource = a.SpareParts;
@@ -51,8 +37,9 @@ namespace Cars
 
         private void Window_Initialized(object sender, EventArgs e)
         {
-            ComboBoxCars.ItemsSource = ControllerAuto.Load();                  
-        }
+            ComboBoxCars.ItemsSource = ControllerAuto.Load();
+            ButtonEnabled(false);
+        }    
         
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -64,8 +51,10 @@ namespace Cars
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             AddRefueling addRefueling = new AddRefueling();
+            
             addRefueling.newAuto = car;
             addRefueling.ShowDialog();
+            refueling = addRefueling;
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
@@ -73,6 +62,27 @@ namespace Cars
             AddSparePart addSparePart = new AddSparePart();
             addSparePart.newAuto = car;
             addSparePart.ShowDialog();
+        }
+
+       
+
+        /// <summary>
+        /// Включение и выключение кнопок добавления
+        /// </summary>
+        /// <param name="i">индикатор</param>
+        private void ButtonEnabled(bool i)
+        {
+            B_AddRefueling.IsEnabled = i;
+            B_AddService.IsEnabled = i;
+            B_AddSparePart.IsEnabled = i;
+        }
+
+        private void Window_Activated(object sender, EventArgs e)
+        {
+            if (refueling.newAuto != null)
+            {
+                TB_AvFuel.Text = refueling.newAuto.AvFuel.ToString();
+            }
         }
     }
 }

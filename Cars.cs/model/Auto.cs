@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cars.cs.model
 {
@@ -42,7 +39,11 @@ namespace Cars.cs.model
         /// Объем топлива в баке
         /// </summary>
         public double FuelVolume { get; set; }
-
+        
+        /// <summary>
+        /// Средний расход авто
+        /// </summary>
+        public double AvFuel { get; set; }
 
         /// <summary>
         /// Список запчастей

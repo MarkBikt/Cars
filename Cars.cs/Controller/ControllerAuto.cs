@@ -1,10 +1,6 @@
 ﻿using Cars.cs.model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cars.cs.Controller
 {
@@ -18,7 +14,16 @@ namespace Cars.cs.Controller
         /// Потрачено на авто за все время
         /// </summary>
         public static double PriceAll { get; private set; } = 0;
-      
+
+        private static double newVolume = 0;
+        private static double preMileage = 0;
+        private static double Mileage = 0;
+
+        /// <summary>
+        /// Расход на 100 км.
+        /// </summary>
+        
+
         /// <summary>
         /// Добавление автомобиля
         /// </summary>
@@ -47,11 +52,7 @@ namespace Cars.cs.Controller
             }
             var sparePart = new SparePart(name, price) { AutoId = car.Id };
             car.SpareParts.Add(sparePart);
-            //using (CarsContext db = new CarsContext())
-            //{
-            //    db.SpareParts.Add(sparePart);
-            //    db.SaveChanges();
-            //}
+            
             Save(sparePart);
             PriceAll += price;            
         }
@@ -67,11 +68,7 @@ namespace Cars.cs.Controller
             }
             var service = new Service (name, price) {AutoId = car.Id };
             car.Services.Add(service);
-            //using (CarsContext db = new CarsContext())
-            //{
-            //    db.Services.Add(service);
-            //    db.SaveChanges();
-            //}
+           
             Save(service);
             PriceAll += price;
         }
@@ -81,23 +78,40 @@ namespace Cars.cs.Controller
         /// <param name="gosNumber">гос. номер</param>
         /// <param name="price">Цена</param>
         /// <param name="volume">Объем в литрах</param>
-        public static void AddRefueling(double price, double volume, double carMileage, Auto car)
+        public static Auto AddRefueling(double price, double volume, double carMileage, Auto car, bool check)
         {
-
+            
             if (car == null)
             {
                 throw new ArgumentException($"{nameof(car)} не может быть пустым", nameof(car));
             }
             var refueling = new Refueling(price, volume, carMileage) { AutoId = car.Id };
             car.Refuelings.Add(refueling);
-            //using (CarsContext db = new CarsContext())
-            //{
+            if (check == true)
+            {
+                newVolume += volume;
+                if (preMileage != 0)
+                {
+                    Mileage = carMileage - preMileage;
+                }
+                else if (preMileage == 0)
+                {
+                    Mileage = carMileage - car.CarMileage;
+                }
 
-            //    db.Refuelings.Add(refueling);
-            //    db.SaveChanges();
-            //}
+                car.AvFuel = 100 * newVolume / Mileage;
+
+                newVolume = 0;
+                preMileage = carMileage;
+            }
+            else if (check == false)
+            {
+                newVolume += volume;
+            }
             Save(refueling);
             PriceAll += price;
+
+            return car;
         }
         /// <summary>
         /// Сохранение

@@ -37,7 +37,8 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <Button Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="55,177,0,0" Click="Button_Click"/>
+        <Button Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="55,191,0,0" Click="Button_Click"/>
+        <CheckBox Name="CheckBoxFullFuel" Content="Полный бак" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,166,0,0"/>
 
 
     </Grid>

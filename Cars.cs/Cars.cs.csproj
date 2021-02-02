@@ -52,9 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\ControllerAuto.cs" />
-    <Compile Include="Migrations\202101272019137_InitialCreate.cs" />
-    <Compile Include="Migrations\202101272019137_InitialCreate.designer.cs">
-      <DependentUpon>202101272019137_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202102022015457_InitialCreate.cs" />
+    <Compile Include="Migrations\202102022015457_InitialCreate.designer.cs">
+      <DependentUpon>202102022015457_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="model\Auto.cs" />
@@ -69,8 +69,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202101272019137_InitialCreate.resx">
-      <DependentUpon>202101272019137_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202102022015457_InitialCreate.resx">
+      <DependentUpon>202102022015457_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

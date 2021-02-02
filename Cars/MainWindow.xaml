@@ -5,17 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cars"
         mc:Ignorable="d"
-        Title="Cars" Height="450" Width="800" Initialized="Window_Initialized">
+        Title="Cars" Height="450" Width="800" Initialized="Window_Initialized" ResizeMode="CanMinimize" Activated="Window_Activated">
     <Grid>
+        
 
-        <ComboBox Name="ComboBoxCars" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" SelectionChanged="ComboBox_SelectionChanged" Margin="577,10,0,0" RenderTransformOrigin="-0.436,0.43"/>
-        <Button Name="B_AddCarWindow" Content="Добавить Авто" HorizontalAlignment="Left" Margin="460,10,0,0" VerticalAlignment="Top" Width="90" Click="Button_Click"/>
-        <ListBox Name ="ListBoxService"  HorizontalAlignment="Left" Height="100" Margin="460,64,0,0" VerticalAlignment="Top" Width="300"/>
-        <Button Content="Добавить услугу" HorizontalAlignment="Left" Margin="338,64,0,0" VerticalAlignment="Top" Width="120" Height="20" Click="Button_Click_1" />
-        <TextBlock HorizontalAlignment="Left" Margin="460,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Расходы:"/></TextBlock>
-        <Button Content="Добавить заправку" HorizontalAlignment="Left" Margin="338,172,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click_2"/>
-        <ListBox Name="ListBoxRefueling" HorizontalAlignment="Left" Height="100" Margin="460,172,0,0" VerticalAlignment="Top" Width="300"/>
-        <Button Content="Добавить запчасти" HorizontalAlignment="Left" Margin="338,277,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click_3"/>
-        <ListBox Name="ListBoxSparePart" HorizontalAlignment="Left" Height="100" Margin="460,277,0,0" VerticalAlignment="Top" Width="300"/>
+        <ComboBox Name="ComboBoxCars" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" SelectionChanged="ComboBox_SelectionChanged" Margin="103.443,10,0,0" RenderTransformOrigin="-0.436,0.43" Grid.Column="1"/>
+        <Button Name="B_AddCarWindow" Content="Добавить Авто" HorizontalAlignment="Left" Margin="460,10,0,0" VerticalAlignment="Top" Width="90" Click="Button_Click" Grid.ColumnSpan="2"/>
+        <ListBox Name ="ListBoxService"  HorizontalAlignment="Left" Height="100" Margin="460,64,0,0" VerticalAlignment="Top" Width="300" Grid.ColumnSpan="2"/>
+        <Button Name="B_AddService" Content="Добавить услугу" HorizontalAlignment="Left" Margin="338,64,0,0" VerticalAlignment="Top" Width="120" Height="20" Click="Button_Click_1" />
+        <TextBlock HorizontalAlignment="Left" Margin="460,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2"><Run Text="Расходы:"/></TextBlock>
+        <Button Name="B_AddRefueling" Content="Добавить заправку" HorizontalAlignment="Left" Margin="338,172,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click_2"/>
+        <ListBox Name="ListBoxRefueling" HorizontalAlignment="Left" Height="100" Margin="460,172,0,0" VerticalAlignment="Top" Width="300" Grid.ColumnSpan="2"/>
+        <Button Name="B_AddSparePart" Content="Добавить запчасти" HorizontalAlignment="Left" Margin="338,277,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click_3"/>
+        <ListBox Name="ListBoxSparePart" HorizontalAlignment="Left" Height="100" Margin="460,277,0,0" VerticalAlignment="Top" Width="300" Grid.ColumnSpan="2"/>
+        <TextBox Name="TB_AvFuel" x:FieldModifier="public" HorizontalAlignment="Left" Height="16" Margin="163.443,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="61.443,48,0,0" TextWrapping="Wrap" Text="Расход на 100 км." VerticalAlignment="Top" Grid.Column="1"/>
     </Grid>
 </Window>

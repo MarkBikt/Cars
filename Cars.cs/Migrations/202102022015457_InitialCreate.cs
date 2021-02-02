@@ -19,6 +19,7 @@
                         Color = c.String(),
                         CarMileage = c.Double(nullable: false),
                         FuelVolume = c.Double(nullable: false),
+                        AvFuel = c.Double(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
